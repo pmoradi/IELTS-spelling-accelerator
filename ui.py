@@ -12,6 +12,15 @@ import pickle
 import webbrowser
 import voice_scrapper as vs
 from tkinter.tix import *
+import os
+
+# Specify the path of the folder you want to create
+folder_path = "./voices"
+
+if not os.path.exists(folder_path):
+    os.makedirs(folder_path)
+    print(f"Folder '{folder_path}' created successfully.")
+
 
 
 current_path = pathlib.Path(__file__).parent.resolve()._str
@@ -115,7 +124,7 @@ class Spelling_APP:
         if not os.path.exists(file_path):
             print('File does not exist. We are going to download it ... ')
             voice = file_path.split('/')[-1]
-            vs.save_voice(voice)
+            vs.save_voice(os.path.splitext(voice)[0])
         mixer.init()
         mixer.music.load(file_path)
         mixer.music.play()
