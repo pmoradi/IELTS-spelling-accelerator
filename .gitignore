@@ -1,0 +1,7 @@
+venv
+voices
+*.log
+*.pyc
+data_backup
+*.pickle
+my_words.csv
